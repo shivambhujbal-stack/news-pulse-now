@@ -1,13 +1,33 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import { NewsProvider } from '@/context/NewsContext';
+import Navbar from '@/components/Navbar';
+import CategoryFilter from '@/components/CategoryFilter';
+import NewsFeed from '@/components/NewsFeed';
+import TrendingNews from '@/components/TrendingNews';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <NewsProvider>
+      <div className="min-h-screen bg-gray-50">
+        <Navbar />
+        
+        <main className="container py-6 px-4">
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Main content */}
+            <div className="w-full md:w-3/4 space-y-6">
+              <CategoryFilter />
+              <NewsFeed />
+            </div>
+            
+            {/* Sidebar */}
+            <div className="w-full md:w-1/4 space-y-6">
+              <TrendingNews />
+            </div>
+          </div>
+        </main>
       </div>
-    </div>
+    </NewsProvider>
   );
 };
 
